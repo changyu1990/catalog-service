@@ -28,6 +28,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.retry:spring-retry")
+	implementation("org.flywaydb:flyway-core:9.22.3")
 
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
 

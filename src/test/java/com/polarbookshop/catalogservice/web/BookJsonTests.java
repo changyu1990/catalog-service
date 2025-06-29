@@ -16,7 +16,7 @@ public class BookJsonTests {
 
     @Test
     public void testSerialize() throws Exception {
-        var book = Book.of("1234567890", "The Great Gatsby", "F. Scott Fitzgerald", 9.90);
+        var book = Book.of("1234567890", "The Great Gatsby", "F. Scott Fitzgerald", 9.90, "Polarsophia");
         var jsonContent = json.write(book);
         assertThat(jsonContent).extractingJsonPathStringValue("@.isbn")
                 .isEqualTo(book.isbn());
@@ -26,13 +26,15 @@ public class BookJsonTests {
                 .isEqualTo(book.author());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
                 .isEqualTo(book.price());
+        assertThat(jsonContent).extractingJsonPathStringValue("@.publisher")
+                .isEqualTo(book.publisher());
     }
 
     @Test
     public void testDeserialize() throws Exception {
-        var content = "{\"isbn\":\"1234567890\",\"title\":\"The Great Gatsby\",\"author\":\"F. Scott Fitzgerald\",\"price\":9.9}";
+        var content = "{\"isbn\":\"1234567890\",\"title\":\"The Great Gatsby\",\"author\":\"F. Scott Fitzgerald\",\"price\":9.9,\"publisher\":\"Polarsophia\"}";
         assertThat(json.parse(content))
                 .usingRecursiveComparison()
-                .isEqualTo(Book.of("1234567890", "The Great Gatsby", "F. Scott Fitzgerald", 9.9));
+                .isEqualTo(Book.of("1234567890", "The Great Gatsby", "F. Scott Fitzgerald", 9.9, "Polarsophia"));
     }
 }
