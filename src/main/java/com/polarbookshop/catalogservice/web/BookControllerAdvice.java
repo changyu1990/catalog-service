@@ -15,12 +15,13 @@ import java.util.Map;
 @RestControllerAdvice
 public class BookControllerAdvice {
     @ExceptionHandler(BookNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     String handleBookNotFound(BookNotFoundException ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(BookAlreadyExistsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.CONFLICT)
     String handleException(BookAlreadyExistsException ex) {
         return ex.getMessage();
     }

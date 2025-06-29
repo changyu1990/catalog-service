@@ -29,6 +29,6 @@ class BookControllerMvcTests {
 
         mockMvc
                 .perform(get("/books/" + isbn))
-                .andExpect(status().isOk());
+                .andExpect(status().isNotFound());
     }
 }
