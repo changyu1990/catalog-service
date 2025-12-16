@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: QuDevLabs/catalog-service
+  IMAGE_NAME: qudevlabs/catalog-service
   VERSION: latest
 
 jobs:
