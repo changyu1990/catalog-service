@@ -73,6 +73,7 @@ class CatalogServiceApplicationTests {
         webTestClient
                 .get()
                 .uri("/books/" + bookIsbn)
+                .headers(headers -> headers.setBearerAuth(isabelleTokens.accessToken()))
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBody(Book.class).value(actualBook -> {
@@ -174,6 +175,7 @@ class CatalogServiceApplicationTests {
         webTestClient
                 .get()
                 .uri("/books/" + bookIsbn)
+                .headers(headers -> headers.setBearerAuth(isabelleTokens.accessToken()))
                 .exchange()
                 .expectStatus().isNotFound()
                 .expectBody(String.class).value(errorMessage ->
